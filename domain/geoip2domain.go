@@ -36,8 +36,12 @@ func (d *GeoIP2Domain) GetCountryCodeForIP(ip net.IP) (string, error) {
 	if err != nil {
 		return "", fmt.Errorf("can't lookup country for IP %s: %w", ip, err)
 	}
+	ccode := strings.ToLower(record.Country.ISOCode)
+	if ccode == "none" {
+		return "", nil
+	}
 
-	return strings.ToLower(record.Country.ISOCode), nil
+	return ccode, nil
 }
 
 // Close needs to be called to properly close the internal maxminddb database.

@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-const geoip2Path = "../geoip2/GeoLite2-Country.mmdb"
+const geoip2Path = "../geoacumen/Geoacumen-Country.mmdb"
 
 func setupGeoip2Domain(t *testing.T) *GeoIP2Domain {
 	geoip2, err := NewGeoIP2Domain(geoip2Path)
